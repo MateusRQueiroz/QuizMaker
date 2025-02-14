@@ -1,12 +1,21 @@
 package com.mateus.quizmaker;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import com.google.gson.Gson;
+
 
 public class Quiz_manager {
     HashMap<String, HashMap<String,String>> quizzes_manager = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
-    public Quiz_manager() { }
+    Gson gson = new Gson();
+    public Quiz_manager() { 
+        loadFromFile();
+    }
 
     public void createQuiz(String quiz_name) {
         Quiz quiz = new Quiz(quiz_name);
@@ -20,15 +29,27 @@ public class Quiz_manager {
             } else {
                 break;
             }
+        scanner.close();
         }
         quizzes_manager.put(quiz_name, quiz.getQuiz());
         saveToFile();
     }
+
     public void saveToFile() {
+        try (FileWriter writer = new FileWriter("src\\main\\java\\com\\quizzes.json")) {
+            gson.toJson(quizzes_manager, writer);
+        } catch (IOException e) {
+        }
+    }
+
+    public final void loadFromFile() {
+        try (FileReader reader = new FileReader("src\\main\\java\\com\\quizzes.json")) {
+            gson.fromJson(reader, quizzes_manager.getClass());
+        } catch (IOException e) {
+        }
         
     }
 
-    public HashMap loadFromFile() {
-        return null;
-    }
+    public HashMap<String, HashMap<String, String>> getQuizzes_manager() { return quizzes_manager; }
+
 }
