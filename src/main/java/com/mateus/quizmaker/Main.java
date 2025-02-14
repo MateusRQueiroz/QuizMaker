@@ -6,7 +6,7 @@ public class Main {
         Gson gson = new Gson();
         
         // Example usage of Gson
-        String json = gson.toJson(new MyObject("Hello", 123));
+        String json = gson.toJson("33");
         System.out.println(json);
     }
 }
