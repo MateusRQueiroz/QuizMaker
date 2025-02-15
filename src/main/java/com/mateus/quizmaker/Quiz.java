@@ -3,7 +3,7 @@ package com.mateus.quizmaker;
 import java.util.HashMap;
 
 public class Quiz {
-    private HashMap<String, String> quiz = new HashMap<>();
+    private final HashMap<String, String> quiz = new HashMap<>();
     private final String quiz_name;
 
     public Quiz(String quiz_name) {

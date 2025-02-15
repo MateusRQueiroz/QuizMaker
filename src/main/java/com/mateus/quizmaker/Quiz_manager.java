@@ -3,10 +3,12 @@ package com.mateus.quizmaker;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 public class Quiz_manager {
@@ -44,7 +46,8 @@ public class Quiz_manager {
 
     public final void loadFromFile() {
         try (FileReader reader = new FileReader("src\\main\\java\\com\\quizzes.json")) {
-            gson.fromJson(reader, quizzes_manager.getClass());
+            Type quizMapType = new TypeToken<HashMap<String, Quiz>>() {}.getType();
+            quizzes_manager = gson.fromJson(reader, quizMapType);
         } catch (IOException e) {
         }
         
