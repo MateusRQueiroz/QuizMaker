@@ -10,9 +10,10 @@ import com.google.gson.Gson;
 
 
 public class Quiz_manager {
-    HashMap<String, HashMap<String,String>> quizzes_manager = new HashMap<>();
+    HashMap<String, Quiz> quizzes_manager = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
     Gson gson = new Gson();
+
     public Quiz_manager() { 
         loadFromFile();
     }
@@ -29,9 +30,8 @@ public class Quiz_manager {
             } else {
                 break;
             }
-        scanner.close();
         }
-        quizzes_manager.put(quiz_name, quiz.getQuiz());
+        quizzes_manager.put(quiz_name, quiz);
         saveToFile();
     }
 
@@ -50,6 +50,7 @@ public class Quiz_manager {
         
     }
 
-    public HashMap<String, HashMap<String, String>> getQuizzes_manager() { return quizzes_manager; }
-
+    public HashMap<String, Quiz> getQuizzes_manager() {
+        return quizzes_manager;
+    }
 }
