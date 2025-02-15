@@ -41,6 +41,7 @@ public class Main {
                                 quiz.addQuestion(new_question, new_answer);
                                 System.out.println("Question added.");
                                 quiz_manager.saveToFile();
+                                break;
                             }
                             case "R" -> {
                                 System.out.println("Enter question: ");
@@ -48,18 +49,21 @@ public class Main {
                                 quiz.removeQuestion(toRemove_question);
                                 System.out.println("Question removed.");
                                 quiz_manager.saveToFile();
+                                break;
                             }
                             case "V" -> {
-                                System.out.println((quiz.getQuiz()));
+                                System.out.println((quiz.printQuiz()));
+                                break;
                             }
                             case "Q" -> {
-                                // Add code for quizzing yourself
+                                break;
                             }
                         }
                 }
-
-
                 case "C":
+                    System.out.println("Enter quiz name: ");
+                    String new_quizName = scanner.nextLine();
+                    quiz_manager.createQuiz(new_quizName);
                     break;
                 case "Q": 
                     break;
