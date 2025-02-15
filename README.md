@@ -12,11 +12,11 @@ QuizMaker is a command-line application that allows users to create, manage, and
 
 ## Usage
 ### Main Menu Options
- **(A)**ccess Existing Quiz – Enter the name of an existing quiz to modify or take it.
- **(V)**iew Quizzes – Display all available quizzes.
- **(C)**reate New Quiz – Create a quiz and add questions.
- **(R)**emove Quiz – Delete a quiz from the system.
- **(Q)**uit – Exit the application.
+- `(A)`ccess Existing Quiz – Enter the name of an existing quiz to modify or take it.
+- `(V)`iew Quizzes – Display all available quizzes.
+- `(C)`reate New Quiz – Create a quiz and add questions.
+- `(R)`emove Quiz – Delete a quiz from the system.
+- `(Q)`uit – Exit the application.
 
 ## Installation
 ### Prerequisites
@@ -36,11 +36,11 @@ QuizMaker is a command-line application that allows users to create, manage, and
 
 3. Compile the Java files: 
 
-``` javac -cp .;gson.jar com/mateus/quizmaker/*.java ```
+``` javac -cp .;gson.jar src/main/java/com/mateus/quizmaker/*.java ```
 
 4. Run the application: 
 
-``` java -cp .;gson.jar com.mateus.quizmaker.Main ```
+``` java -cp .;gson.jar src.main.java.com.mateus.quizmaker.Main ```
 
 
 ## Contributing
