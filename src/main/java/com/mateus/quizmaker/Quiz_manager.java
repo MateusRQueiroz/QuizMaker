@@ -37,6 +37,11 @@ public class Quiz_manager {
         saveToFile();
     }
 
+    public void removeQuiz(String quiz_name) {
+        quizzes_manager.remove(quiz_name);
+        saveToFile();
+    }
+
     public void saveToFile() {
         try (FileWriter writer = new FileWriter("src\\main\\java\\com\\quizzes.json")) {
             gson.toJson(quizzes_manager, writer);
