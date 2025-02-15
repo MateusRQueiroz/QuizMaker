@@ -65,41 +65,57 @@ public class Main {
                             String new_question = scanner.nextLine();
                             System.out.println("Enter answer: ");
                             String new_answer = scanner.nextLine();
-                            quiz.addQuestion(new_question, new_answer);
-                            System.out.println("Question added.");
-                            quiz_manager.saveToFile();
+                            if (quiz != null) {
+                                quiz.addQuestion(new_question, new_answer);
+                                System.out.println("Question added.");
+                                quiz_manager.saveToFile();
+                            } else {
+                                System.out.println("No quiz selected.");
+                            }
                             break;
                         }
                         case "R" -> {
                             System.out.println("Enter question: ");
                             String toRemove_question = scanner.nextLine();
-                            quiz.removeQuestion(toRemove_question);
-                            System.out.println("Question removed.");
-                            quiz_manager.saveToFile();
+                            if (quiz != null) {
+                                quiz.removeQuestion(toRemove_question);
+                                System.out.println("Question removed.");
+                                quiz_manager.saveToFile();
+                            } else {
+                                System.out.println("No quiz selected.");
+                            }
                             break;
                         }
                         case "V" -> {
-                            System.out.println(quiz.printQuiz());
+                            if (quiz != null) {
+                                System.out.println(quiz.printQuiz());
+                            } else {
+                                System.out.println("No quiz selected.");
+                            }
                             break;
                         }
                         case "Q" -> {
-                            HashMap<String, String> quiz_hash = quiz.getQuiz();
-                            float questions_total = quiz_hash.size();
-                            float correct_answers = 0;
-                            System.out.println("Starting quiz...");
-                            for (HashMap.Entry<String, String> entry : quiz_hash.entrySet()) {
-                                System.out.println(entry.getKey() + " ");
-                                String answer = scanner.nextLine();
-                                if (answer.equals(entry.getValue())) {
-                                    System.out.println("Correct!");
-                                    correct_answers++;
-                                } else {
-                                    System.out.println("Incorrect!");
-                                    System.out.println("The correct answer was " + entry.getValue());
+                            if (quiz != null) {
+                                HashMap<String, String> quiz_hash = quiz.getQuiz();
+                                float questions_total = quiz_hash.size();
+                                float correct_answers = 0;
+                                System.out.println("Starting quiz...");
+                                for (HashMap.Entry<String, String> entry : quiz_hash.entrySet()) {
+                                    System.out.println(entry.getKey() + " ");
+                                    String answer = scanner.nextLine();
+                                    if (answer.equals(entry.getValue())) {
+                                        System.out.println("Correct!");
+                                        correct_answers++;
+                                    } else {
+                                        System.out.println("Incorrect!");
+                                        System.out.println("The correct answer was " + entry.getValue());
+                                    }
                                 }
+                                float grade = (correct_answers / questions_total) * 100;
+                                System.out.println("Your grade is " + grade + "%");
+                            } else {
+                                System.out.println("No quiz selected.");
                             }
-                            float grade = (correct_answers / questions_total) * 100;
-                            System.out.println("Your grade is " + grade + "%");
                             break;
                         }
                         case "B" -> {
