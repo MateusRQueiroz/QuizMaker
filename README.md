@@ -28,7 +28,7 @@ QuizMaker is a command-line application that allows users to create, manage, and
 
 1. Clone this repository:
 
-``` git clone https://github.com/your-username/QuizMaker.git ```
+``` git clone https://github.com/MateusRQueiroz/QuizMaker.git ```
 
 2. Navigate to the project directory:
 
